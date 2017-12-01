@@ -1,9 +1,9 @@
 package com.tc25.view;
 
 import com.tc25.bizImpl.Register;
-import com.tc25.bizImpl.UserLogin;
 
-/** 
+
+/**
  * @Title: RegisterView.java
  * @package: com.tc25.view
  * @Description: 二级菜单用户注册界面
@@ -13,13 +13,16 @@ import com.tc25.bizImpl.UserLogin;
  */
 public class RegisterView extends View {
 
+	private View mView;
+	
 	@Override
 	public View showView() {
-		
-		Register r =new Register();
+
+		Register r = new Register();
 		r.register();
 		
-		return null;
+		mView = new SplashView();
+		return mView;
 	}
 
 }

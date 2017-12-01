@@ -2,7 +2,7 @@ package com.tc25.view;
 
 import com.tc25.bizImpl.UserLogin;
 
-/** 
+/**
  * @Title: LoginView.java
  * @package: com.tc25.view
  * @Description: 二级菜单用户登录界面
@@ -13,25 +13,14 @@ import com.tc25.bizImpl.UserLogin;
 public class LoginView extends View {
 
 	private View mView;
-	
-	
-	
-	
-	
-	
-	
+
 	@Override
 	public View showView() {
-		
+
 		UserLogin u = new UserLogin();
 		u.login();
-		
-		
-		
-		
-		
-		
-		return null;
+		mView = new SplashView();
+		return mView;
 	}
 
 }

@@ -32,26 +32,26 @@ public class Register implements RegisterInterface {
 	public void register() {
 		String acc = gainAccount();
 		String pwd = gainPassWord();
-		
+
 		String userPwdTip = "";
 		System.out.println("请问是否需要输入密码提示(1.需要  输入其他任意为不需要)");
 		String isNeedTip = input.getString();
-		if("1".equals(isNeedTip)){
+		if ("1".equals(isNeedTip)) {
 			userPwdTip = gainUserPwdTip();
-		}else{
+		} else {
 			userPwdTip = "";
 		}
-		
+
 		System.out.println("请问是否需要输入昵称(1.需要 输入其他任意为默认使用账户名作为昵称)");
 		String userTip = "";
 		String isNeedName = input.getString();
-		if("1".equals(isNeedName)){
+		if ("1".equals(isNeedName)) {
 			userTip = gainUserTip();
-		}else{
-			userTip=acc;
+		} else {
+			userTip = acc;
 		}
-		
-		userList.add(new User(acc,userTip,userL.userIdCreate(),pwd,userPwdTip,true));
+
+		userList.add(new User(acc, userTip, userL.userIdCreate(), pwd, userPwdTip, true));
 		System.out.println("用户注册成功！");
 
 	}
@@ -115,11 +115,12 @@ public class Register implements RegisterInterface {
 		}
 		return a;
 	}
-/**
- * @Description :写入用户密码提示
- * @author Administrator
- * @Date   2017年11月23日上午12:11:35
- */
+
+	/**
+	 * @Description :写入用户密码提示
+	 * @author Administrator
+	 * @Date 2017年11月23日上午12:11:35
+	 */
 	public String gainUserPwdTip() {
 		System.out.println("请输入当前账户密码提示");
 		String a = "";
@@ -144,33 +145,37 @@ public class Register implements RegisterInterface {
 	 * @return
 	 */
 	public String gainPassWord() {
-		System.out.println("请输入密码");
-		String pwd = "";
+
+		String pwd1 = "";
 		String pwd2 = "";
 		Pattern p = Pattern.compile("[a-zA-Z0-9_.]{1,16}");
-		Matcher m = null;
+		Matcher m1 = null;
+		Matcher m2 = null;
 
 		while (true) {
-			pwd = input.getString();
-			m = p.matcher(pwd);
-			if (m.matches()) {
-
+			System.out.println("请输入密码");
+			pwd1 = input.getString();
+			m1 = p.matcher(pwd1);
+			if (m1.matches()) {
+				break;
 			} else {
 				System.out.println("输入密码类型不符合规范，请重新输入，谢谢！");
 				break;
 			}
+		}
+		while (true) {
 			System.out.println("请再次输入密码");
 			pwd2 = input.getString();
-			if (m.matches()) {
-				if (pwd2.equals(pwd)) {
-					System.out.println("密码录入成功");
+			m2 = p.matcher(pwd2);
+			if (m2.matches()) {
+				if (pwd1.equals(pwd2)) {
+					System.out.println("密码录入成功!");
 					break;
 				} else {
-					continue;
+					System.out.println("第二次密码与第一次不匹配");
 				}
 			} else {
-				System.out.println("第二次输入密码不符合规范，请重新输入，谢谢！");
-				continue;
+				System.out.println("第二次输入密码不符合规范");
 			}
 		}
 		return pwd2;

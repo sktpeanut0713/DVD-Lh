@@ -9,12 +9,6 @@ package com.tc25.biz;
  */
 public interface LoginInterface {
 
-	
-	
-	
-	
-	
-	
 	public void login();
 	
 }
